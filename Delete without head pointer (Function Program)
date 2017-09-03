@@ -1,0 +1,42 @@
+http://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1
+
+Solution c++
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/* Link list node 
+struct Node
+{
+    int data;
+    Node* next;
+}*/
+// This function should delete node from linked list. The function
+// may assume that node exists in linked list and is not last node
+void deleteNode(Node *node)
+{
+   // Your code here
+   
+   
+   if(head->data==node->data)
+   {
+       head=head->next;
+   }
+   else
+   {
+   struct Node *cur;
+   cur=head;
+   while(cur->next->data!=node->data)
+   {
+       cur=cur->next;
+       
+   }
+   cur->next=cur->next->next;
+   
+   }
+   
+   
+}
