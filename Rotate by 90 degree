@@ -1,0 +1,34 @@
+http://practice.geeksforgeeks.org/problems/rotate-by-90-degree/0
+
+Solution c++:
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int l;
+	cin>>l;
+	for(int k=0;k<l;k++)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n][n];
+	    for(int i=0;i<n;i++)
+	    {
+	        for(int j=0;j<n;j++)
+	        {
+	            cin>>a[i][j];
+	        }
+	    }
+	    for(int j=n-1;j>=0;j--)
+	    {
+	        for(int i=0;i<n;i++)
+	        {
+	            cout<<a[i][j]<<" ";
+	        }
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
