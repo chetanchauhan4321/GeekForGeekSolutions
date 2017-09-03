@@ -1,0 +1,25 @@
+Link: http://practice.geeksforgeeks.org/problems/bit-difference
+
+Solution C++:
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int a,b;
+    cin>>a>>b;
+    int x=a^b;
+    stack<int>st;
+    while(x!=0)
+    {int z=x%2;
+        x=x/2;
+        st.push(z);
+    }
+    int count=0;
+    while(!st.empty())
+    {
+        if(st.top()==1)count++;
+        st.pop();
+    }
+    cout<<count;
+}
