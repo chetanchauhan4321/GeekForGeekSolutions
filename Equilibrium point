@@ -1,0 +1,45 @@
+http://practice.geeksforgeeks.org/problems/equilibrium-point/0
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int z;
+	cin>>z;
+	for(int l=0;l<z;l++)
+	{
+	    int n;
+	    cin>>n;
+	    int lf=0;
+	    vector<int>a(n);
+	    int sum=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	        sum=sum+a[i];
+	    }
+	    int x=0;
+	    int count=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        sum=sum-a[i];
+	       
+	        if(sum==lf)
+	        {
+	            x=i;
+	            count=count+1;
+	            break;
+	        }
+	         lf=lf+a[i];
+	    }
+	    
+	    if(count>0)
+	    cout<<x+1<<endl;
+	    else cout<<-1<<endl;
+	    
+	}
+	return 0;
+}
