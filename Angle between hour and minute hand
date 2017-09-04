@@ -1,0 +1,28 @@
+http://practice.geeksforgeeks.org/problems/angle-between-hour-and-minute-hand/0
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+	    int h,m;
+	    cin>>h>>m;
+	    if(h==12)h=0;
+	    if(m==60)m=0;
+	    
+	    int  ha=(h*60+m)*0.5;
+	    int ma=m*6;
+	   int diff=abs(ha-ma);
+	    
+	    int x=min(360-diff,diff);
+	    
+	    
+	    cout<<x<<endl;
+	}
+	return 0;
+}
