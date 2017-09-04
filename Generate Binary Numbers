@@ -1,0 +1,35 @@
+http://practice.geeksforgeeks.org/problems/generate-binary-numbers/0
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int n;
+	cin>>n;
+	for(int z=0;z<n;z++)
+	{
+	    int p;
+	    cin>>p;
+	    for(int i=1;i<=p;i++)
+	    {
+	        int x=i;
+	    stack<int>st;
+	    while(x!=0)
+	    {
+	        int r=x%2;
+	        x=x/2;
+	        st.push(r);
+	    }
+	    while(!st.empty())
+	    {
+	        cout<<st.top();
+	        st.pop();
+	    }
+	    cout<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
