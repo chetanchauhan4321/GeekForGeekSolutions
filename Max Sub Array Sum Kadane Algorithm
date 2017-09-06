@@ -1,0 +1,38 @@
+http://practice.geeksforgeeks.org/problems/kadanes-algorithm/0
+http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int x;
+	cin>>x;
+	for(int k=0;k<x;k++)
+	{
+	int n;
+	cin>>n;
+	vector<int>a(n);
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i];
+	    
+	}
+	
+	int max_so_far=0;
+	int max_ending_here=0;
+	for(int i=0;i<n;i++)
+	{
+	    max_ending_here=max_ending_here+a[i];
+	    if(max_ending_here<0)max_ending_here=0;
+	    else if(max_ending_here>max_so_far)
+	    max_so_far=max_ending_here;
+	}
+	if(max_so_far>0)
+	cout<<max_so_far<<endl;
+	else if(a.size()==1)
+	cout<<a[0]<<endl;
+	else cout<<-1<<endl;
+	}
+	return 0;
+}
