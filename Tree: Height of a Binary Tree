@@ -1,0 +1,16 @@
+https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree
+
+ int height(Node* root) {
+        // Write your code here.
+        
+      int i=0;
+      int j=0;
+        if(root->left)
+            i=1+height(root->left);
+        if(root->right)
+            j=1+height(root->right);
+        if(i>j) return i;
+        else return j;
+        
+        
+    }
