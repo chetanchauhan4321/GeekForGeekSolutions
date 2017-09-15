@@ -1,0 +1,23 @@
+https://www.hackerrank.com/challenges/tree-level-order-traversal/problem
+
+void levelOrder(node * root) {
+    if(root!=NULL)
+    {
+     queue<node*>q;
+        q.push(root);
+        
+        
+        
+       while(!q.empty())
+       {
+           struct node *n=q.front();
+           cout<<n->data<<" ";
+           if(n->left!=NULL)q.push(n->left);
+           if(n->right!=NULL)q.push(n->right);
+           q.pop();
+       }
+    
+    }
+  
+  
+}
