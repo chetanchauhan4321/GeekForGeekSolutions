@@ -1,0 +1,85 @@
+http://practice.geeksforgeeks.org/problems/sum-of-k-smallest-elements-in-bst/0
+
+
+#include<bits/stdc++.h>
+using namespace std;
+struct node {
+	int data;
+	node* left;
+	node* right;
+	
+};
+node* newnode(int data)
+{
+	struct node *nn=new node();
+	nn->data=data;
+	nn->left=NULL;
+	nn->right=NULL;
+}
+node* insert(node* root,int data)
+{
+	if(root==NULL)
+	{
+		root=newnode(data);
+	}
+	else if(root->data>data)
+	{
+		root->left=insert(root->left,data);
+		
+	}
+	else
+	{
+		root->right=insert(root->right,data);
+	}
+	return root;
+}
+void inorder(node* root,vector<int>&a)
+{
+	if(root!=NULL)
+	{
+		inorder(root->left,a);
+	    a.push_back(root->data);
+		inorder(root->right,a);
+	}
+}
+int main()
+{
+    int z;
+    cin>>z;
+    
+    for(int k=0;k<z;k++)
+    {
+        
+    
+	struct node *root=NULL;
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		int x;
+		cin>>x;
+		root=insert(root,x);
+	}
+	int p;
+	cin>>p;
+	vector<int>a;
+	vector<int>h(100,0);
+	inorder(root,a);
+	int sum=0;
+	int count=0;
+	for(int i=0;i<a.size();i++)
+	{
+     h[a[i]]=h[a[i]]+1;
+	}
+	for(int i=0;i<1000&&count<p;i++)
+	{
+	    if(h[i]!=0){
+	    sum=sum+i;
+	    count++;
+	    }
+	}
+
+	cout<<sum<<endl;
+    }
+	return 0;
+}
