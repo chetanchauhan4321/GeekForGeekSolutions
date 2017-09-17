@@ -1,0 +1,44 @@
+http://practice.geeksforgeeks.org/problems/normal-bst-to-balanced-bst/1
+
+#include<bits/stdc++.h>
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*Structure of the Node of the BST is as
+struct Node
+{
+	int data;
+	Node* left, *right;
+};
+*/
+// Your are required to complete this function
+// function should return root of the modified BST
+void inorder(Node* root,vector<Node*>&a)
+{
+    if(root!=NULL)
+    {
+    inorder(root->left,a);
+    a.push_back(root);
+    inorder(root->right,a);
+    }
+}
+
+Node*  buildTree(vector<Node*>&a,int start,int end)
+{
+    if(start>end)return NULL;
+        int mid=start+(end-start)/2;
+        Node* root=a[mid];
+        root->left=buildTree(a,start,mid-1);
+        root->right=buildTree(a,mid+1,end);
+     return root;
+}
+Node* buildBalancedTree(Node* root)
+{
+	// Code here
+	vector<Node*>a;
+	inorder(root,a);
+    return buildTree(a,0,a.size()-1);
+}
