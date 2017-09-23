@@ -1,0 +1,33 @@
+http://practice.geeksforgeeks.org/problem_submissions.php?pid=700639
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*structure of the node of the linked list is as
+struct Node
+{
+	int data;
+	Node* right, *down;
+};*/
+// n is the size of the matrix
+// function must return the pointer to the first element 
+// of the in linked list i.e. that should be the element at arr[0][0]
+Node* build2DList(int mat[MAX][MAX],int i,int j,int n)
+{
+    if(i<n&&j<n)
+    {
+        struct Node* nn=new Node();
+        nn->data=mat[i][j];
+        nn->right=build2DList(mat,i,j+1,n);
+        nn->down=build2DList(mat,i+1,j,n);
+        return nn;
+    }
+    else return NULL;
+}
+Node* constructLinkedMatrix(int mat[MAX][MAX], int n)
+{
+   return build2DList(mat,0,0,n);
+}
