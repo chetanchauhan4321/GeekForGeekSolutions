@@ -1,0 +1,40 @@
+
+http://practice.geeksforgeeks.org/problems/insert-in-middle-of-linked-list/1
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*
+Structure of the Node of the linked list is as
+struct Node {
+	int data;
+	Node* next;
+};
+*/
+// function should insert node at the middle
+// of the linked list
+Node* insertInMiddle(Node* head, int x)
+{
+	// Cpde here
+	struct Node *slow;
+	struct Node *fast;
+	slow=head;
+	fast=head;
+	while(fast->next&&fast->next->next)
+	{
+	    	    //cout<<fast->data;
+	    fast=fast->next->next;
+	    slow=slow->next;
+
+	}
+	struct Node *nn=new Node();
+	nn->data=x;
+	nn->next=NULL;
+
+	nn->next=slow->next;
+	slow->next=nn;
+	
+return head;
+}
