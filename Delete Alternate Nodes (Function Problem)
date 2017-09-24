@@ -1,0 +1,38 @@
+http://practice.geeksforgeeks.org/problems/delete-alternate-nodes/1
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*
+Structure of the node of the binary tree
+struct Node
+{
+	int data;
+	struct Node *next;
+};
+*/
+// Complete this function
+void deleteAlt(struct Node *head){
+    // Code here
+    if(head==NULL)return;
+    struct Node* prev=head;
+    struct Node* cur=prev->next;
+    if(prev->next==NULL)prev->next=NULL;
+    else if(cur->next==NULL)prev->next=NULL;
+    else{
+    struct Node* next=cur->next;
+    while(next!=NULL)
+    {
+        prev->next=next;
+        cur=NULL;
+        if(next->next==NULL)break;
+        cur=next->next;
+        prev=next;
+        next=cur->next;
+        if(next==NULL)prev->next=NULL;
+    }
+    }
+}
