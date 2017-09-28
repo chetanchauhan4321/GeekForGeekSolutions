@@ -1,0 +1,50 @@
+http://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*The structure of linked list is the following
+struct Node
+{
+int data;
+Node* next;
+};*/
+Node *removeDuplicates(Node *root)
+{
+ // your code goes here
+ vector<int>h(1000,0);
+ while(root!=NULL)
+ {
+     h[root->data]=root->data;
+     root=root->next;
+ }
+ int count=0;
+ for(int i=0;i<1000;i++)
+ {
+     if(h[i]!=0)
+     {
+         struct Node* nn=new Node();
+         nn->data=h[i];
+         nn->next=NULL;
+         if(count==0)
+         {
+             root=nn;
+         }
+         else
+         {
+             struct Node* temp;
+             temp=root;
+             while(temp->next)
+             {
+                 temp=temp->next;
+             }
+             temp->next=nn;
+         }
+         count++;
+     }
+ }
+ return root;
+}
