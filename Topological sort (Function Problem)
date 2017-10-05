@@ -1,0 +1,44 @@
+http://practice.geeksforgeeks.org/problems/topological-sort/1
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/* You need to complete this function */
+stack<int>st;
+void topoSortUtil(int v,bool visited[],vector<int> graph[])
+{
+    if(!visited[v])
+    {
+    visited[v]=true;
+   
+    for(auto i=graph[v].begin();i!=graph[v].end();i++)
+    {
+        if(!visited[*i])topoSortUtil(*i,visited,graph);
+    }
+     st.push(v);
+    }
+}
+int * topoSort(vector<int> graph[], int N)
+{
+   // Your code here
+
+   bool visited[N];
+   for(int i=0;i<N;i++)visited[i]=false;
+   
+   for(int i=0;i<N;i++)
+   {
+       if(!visited[i])topoSortUtil(i,visited,graph);
+   }
+   int *a=new int[N];
+   int i=0;
+   while(!st.empty())
+   {
+       a[i]=st.top();
+       st.pop();
+       i++;
+   }
+   return a;
+}
