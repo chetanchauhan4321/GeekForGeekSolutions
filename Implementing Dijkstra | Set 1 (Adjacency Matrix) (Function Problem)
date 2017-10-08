@@ -1,0 +1,48 @@
+http://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/* The function prints V space separated integers where 
+    the ith integer denote the shortest distance of ith vertex
+    from source vertex */
+ 
+    
+void dfs(int graph[MAX][MAX], int s,int V)
+{
+    vector<int>d(V,MAX);
+    stack<int>st;
+    st.push(s);
+    d[s]=0;
+    while(!st.empty())
+    {
+        int x=st.top();
+        st.pop();
+        for(int i=0;i<V;i++)
+        {
+            if(graph[x][i]!=0)
+            {
+              if(d[i]>d[x]+graph[x][i])
+              {
+                  d[i]=d[x]+graph[x][i];
+                  st.push(i);
+              }
+            }
+        }
+    }
+    
+    for(int i=0;i<V;i++)
+    {
+        cout<<d[i]<<" ";
+    }
+}
+void dijkstra(int graph[MAX][MAX], int s,int V)
+{
+    
+    dfs(graph,s,V);
+    
+   
+}
