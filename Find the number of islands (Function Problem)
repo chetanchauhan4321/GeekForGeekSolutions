@@ -1,0 +1,55 @@
+http://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*you are required to complete this method*/
+int r[]={-1,-1,-1,0,0,1,1,1};
+int c[]={-1,0,1,-1,1,-1,0,1};
+ 
+bool safe(int x,int y,int A[MAX][MAX],bool visited[MAX][MAX])
+{
+    if(x>=0&&x<MAX&&y>=0&&y<MAX&&A[x][y]==1&&!visited[x][y])return true;
+    else return false;
+}
+void dfs(int x,int y,int A[MAX][MAX],bool visited[MAX][MAX])
+{
+     
+    visited[x][y]=true;
+    for(int i=0;i<8;i++)
+    {
+        if(safe(x+r[i],y+c[i],A,visited))
+        {
+            dfs(x+r[i],y+c[i],A,visited);
+        }
+        
+    }
+}
+int findIslands(int A[MAX][MAX], int N, int M)
+{
+//Your code here 
+bool visited[MAX][MAX];
+for(int i=0;i<N;i++)
+{
+    for(int j=0;j<M;j++)
+    {
+        visited[i][j]=false;
+    }
+}
+int count=0;
+for(int i=0;i<N;i++)
+{
+    for(int j=0;j<M;j++)
+    {
+        if(A[i][j]&&!visited[i][j])
+        {
+            dfs(i,j,A,visited);
+            count++;
+        }
+    }
+}
+return count;
+}
