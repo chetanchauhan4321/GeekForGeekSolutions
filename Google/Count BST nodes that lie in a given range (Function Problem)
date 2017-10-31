@@ -1,0 +1,38 @@
+http://practice.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1
+
+
+
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*
+The structure of a BST node is as follows:
+struct Node {
+int data;
+Node * right, * left;
+};
+*/
+
+int getCountOfNode(Node *root, int l, int h)
+{
+  // your code goes here   
+  if(root)
+  {
+      
+          int x =0;
+
+      x=x+getCountOfNode(root->left,l,h);
+      
+      if(root->data>=l&&root->data<=h){x++;
+     // cout<<root->data<<" ";
+      }
+      x=x+getCountOfNode(root->right,l,h);
+     
+      return x;
+  }
+   
+}
