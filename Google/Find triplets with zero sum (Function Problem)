@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/find-triplets-with-zero-sum/1
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*You are required to complete the function below*/
+bool findTriplets(int a[], int n)
+{ 
+  for(int i=0;i<n;i++)
+  {
+      for(int j=i+1;j<n;j++)
+      {
+          for(int k=j+1;k<n;k++)
+          {
+              if(a[i]+a[j]+a[k]==0&&i!=j && j!=k &&i!=k)return true;
+          }
+      }
+  }
+  return false;
+}
