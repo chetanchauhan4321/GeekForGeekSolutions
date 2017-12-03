@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool i_w(string s,string a,int c)
+{
+    int f=0;
+    for(int i=0;i<s.size()-c+1;i++)
+    {
+        set<char>st;
+        string ss="";
+        for(int j=i;j<i+c;j++)
+        {
+            char ch=s[j];
+            if(st.find(ch)==st.end())
+            {
+                st.insert(ch);
+            }
+        }
+    set<char>:: iterator it;
+    for( it = st.begin(); it!=st.end(); ++it){
+    char ans = *it;
+    ss=ss+ans;
+       }
+ 
+        if(ss==a)
+        {
+        f=1;
+        }
+    }
+    if(f==1)return true;
+    return false;
+}
+int main() {
+
+	int z;
+	cin>>z;
+	while(z--)
+	{
+	    string s;
+	    cin>>s;
+	    vector<int>h(26,0);
+	    for(int i=0;i<s.size();i++)
+	    {
+	        h[s[i]-97]=h[s[i]-97]+1;
+	        
+	    }
+	    int c=0;
+	    string a="";
+	    for(int i=0;i<26;i++)
+	    {
+	        if(h[i]>0)
+	        {c++;
+	        char ch=i+97;
+	        a=a+ch;
+	        }
+	    
+	    }
+	    int f=0;
+	    vector<bool>b(s.size(),false);
+	    for(int i=c;i<s.size();i++)
+	    {
+	        b[i]=i_w(s,a,i);
+	        if(b[i]==true)
+	        {
+	            f=1;
+	        cout<<i<<" ";
+	        break;
+	        }
+	    }
+	}
+	
+	return 0;
+}
